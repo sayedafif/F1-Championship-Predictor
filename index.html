@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>F1 Championship Predictor</title>
+  
+  
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+
+  
+  
+</head>
+
+<body>
+  <h3 class="text-center"> Current Standings</h3>
+
+<!-- START OF CURRENT STANDINGS TABLE-->
+
+<div class="table-responsive table-standings">
+  <table class="table table-bordered table-hover" id="current-standings">
+    <thead>
+      <tr>
+        <th>Position</th>
+        <th>Driver</th>
+        <th>Constructor</th>
+        <th>Points</th>
+        <th>Wins</th>
+      </tr>
+    </thead>
+    <tbody id="current-standings-data"></tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5" class="text-center">Data retrieved from <a href="https://www.formula1.com" target="_blank">Formula 1</a>.</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+<!--end of current standing-->
+
+
+<!-- Start of Predictor -->
+
+<h3 class="text-center"> Try Predicting the winner </h3>
+<div class="table-responsive">
+
+  <table class="table table-bordered table-hover" id="predictor-table">
+    <thead>
+      <tr id="predictor-heading">
+        <th> Race Grand Prix </th>
+      </tr>
+    </thead>
+
+    <tbody id="upcoming-races" >
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="30" class="text-center">Data retrieved from <a href="https://www.formula1.com" target="_blank">Formula 1</a>.</td>
+      </tr>
+    </tfoot>
+  </table>
+
+
+</div>
+<!-- End of Predictor -->
+
+
+<script id="current-standing-row" type="text/x-handlebars-template">
+  {{#each driver_standings}}
+    <tr>
+      <td>{{position}}</td>
+      <td>{{ Driver.givenName }} {{ Driver.familyName }}</td>
+      <td>this/Constructors[0].name</td>
+      <td>{{ points }}</td>
+      <td>{{ wins }}</td>
+    </tr>
+  {{/each}}
+</script>
+
+  <script id="driver-name-heading" type="text/x-handlebars-template">
+    {{#each driver_codes}}
+      <th> {{ Driver.code }} </th>
+    {{/each}}
+  </script>
+
+  <script id="race-name" type="text/x-handlebars-template">
+    {{#each race_names}}
+    <tr>
+      <td> Races.[0].raceName}}} </td>
+    </tr>
+    {{/each}}
+  </script>
+
+  <!--
+  <script id="input-pos" type="text/x-handlebars-template">
+    {{#each input-boxes}}
+      <td> {{ <input type="number" name="quantity" min="1" max="5"> }} </td>
+    {{/each}}
+  </script>
+-->
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js'></script>
+
+    <script  src="js/index.js"></script>
+
+</body>
+</html>
