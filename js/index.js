@@ -43,7 +43,6 @@ $.ajax({
         var race_info_template = Handlebars.compile(source_race_name);
         var race_names = data.MRData.RaceTable.Races;
         var race= race_info_template({'race_names': race_names });
-        console.log(race);
         $('#upcoming-races').append(race);
     }
 });
