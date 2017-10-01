@@ -39,6 +39,7 @@ $.ajax({
     cache: false,
     success: function(data) {
 
+<<<<<<< HEAD
         var race_date = data.MRData.RaceTable.Races[0].date;
 
 
@@ -53,6 +54,14 @@ $.ajax({
 
 
 
+=======
+        // Add RaceNames
+        var source_race_name = $("#race-name").html();
+        var race_info_template = Handlebars.compile(source_race_name);
+        var race_names = data.MRData.RaceTable.Races;
+        var race= race_info_template({'race_names': race_names });
+        $('#upcoming-races').append(race);
+>>>>>>> ea5a2d2cce248fdabedd789a8948fc4ce2b90d44
     }
 });
 
