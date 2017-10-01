@@ -38,28 +38,18 @@ $.ajax({
     dataType: "json",
     cache: false,
     success: function(data) {
-
-
         var race_date = data.MRData.RaceTable.Races[0].date;
-
-
-            // Add RaceNames
-            var source_race_name = $("#race-name").html();
-            var race_info_template = Handlebars.compile(source_race_name);
-            var race_names = data.MRData.RaceTable.Races;
-            var race= race_info_template({'race_names': race_names });
-            //if(race_date > date) {
-                $('#upcoming-races').append(race);
-            //}
-
 
         // Add RaceNames
         var source_race_name = $("#race-name").html();
         var race_info_template = Handlebars.compile(source_race_name);
         var race_names = data.MRData.RaceTable.Races;
-        var race= race_info_template({'race_names': race_names });
-        $('#upcoming-races').append(race);
+        var race = race_info_template({'race_names': race_names });
+        //if(race_date > date) {
+            $('#upcoming-races').append(race);
+        //}
     }
+<<<<<<< HEAD
 });
 
 
@@ -69,3 +59,6 @@ $.ajax({
 
 
 
+=======
+});
+>>>>>>> origin/master
