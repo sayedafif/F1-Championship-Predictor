@@ -3,12 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>F1 Championship Predictor</title>
-  
-  
   <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
-
-  
-  
 </head>
 
 <body>
@@ -30,7 +25,7 @@
     <tbody id="current-standings-data"></tbody>
     <tfoot>
       <tr>
-        <td colspan="5" class="text-center">Data retrieved from <a href="https://www.formula1.com" target="_blank">Formula 1</a>.</td>
+        <td colspan="5" class="text-center">Data retrieved from <a href="https://ergast.com/mrd/" target="_blank">Ergast Developer API </a>.</td>
       </tr>
     </tfoot>
   </table>
@@ -54,7 +49,7 @@
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="30" class="text-center">Data retrieved from <a href="https://www.formula1.com" target="_blank">Formula 1</a>.</td>
+        <td colspan="30" class="text-center">Data retrieved from <a href="http://ergast.com/mrd/" target="_blank">Ergast Developer API</a>.</td>
       </tr>
     </tfoot>
   </table>
@@ -64,12 +59,14 @@
 <!-- End of Predictor -->
 
 
+
+
 <script id="current-standing-row" type="text/x-handlebars-template">
   {{#each driver_standings}}
     <tr>
       <td>{{position}}</td>
       <td>{{ Driver.givenName }} {{ Driver.familyName }}</td>
-      <td>this/Constructors[0].name</td>
+      <td> {{ Constructors.0.name }}</td>
       <td>{{ points }}</td>
       <td>{{ wins }}</td>
     </tr>
@@ -84,19 +81,19 @@
 
   <script id="race-name" type="text/x-handlebars-template">
     {{#each race_names}}
-    <tr>
-      <td> Races.[0].raceName}}} </td>
-    </tr>
+      <tr class="input-box">
+        <td> {{ Races.0.raceName }} </td>
+      </tr>
     {{/each}}
   </script>
 
-  <!--
   <script id="input-pos" type="text/x-handlebars-template">
-    {{#each input-boxes}}
-      <td> {{ <input type="number" name="quantity" min="1" max="5"> }} </td>
+    {{#each driver_codes}}
+    <td> <input type="number" name="quantity" min="1" max="20" />             </td>
     {{/each}}
   </script>
--->
+
+
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
