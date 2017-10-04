@@ -51,27 +51,29 @@ $.ajax({
 });
 
 
+// Function to Duplicate if there are any duplicate values
+function highlightDuplicates() {
+    // console.log("adasd");
+    // loop over all input fields in table
+    $('.input-box').find('.input').each(function() {
+        // console.log("adasd");
+        // check if there is another one with the same value
+        if ($('.input-box').find('input[value="' + $(this).val() + '"]').length > 1) {
+
+            // highlight this
+            $(this).addClass('duplicate');
+        } else {
+            // otherwise remove
+            $(this).removeClass('duplicate');
+        }
+    });
+}
+
+
+
+
 
 $(document).ajaxComplete(function () {
-
-    function highlightDuplicates() {
-        //console.log("dasdsa");
-
-
-        // loop over all input fields in table
-        $('.input-box').find('input').each(function() {
-
-            if ($('.input-box').find('input[value="' + $(this).val() + '"]').length() > 1) {
-                // highlight this
-
-                $(this).addClass('duplicate');
-                console.log("haha");
-            } else {
-                // otherwise remove
-                $(this).removeClass('duplicate');
-            }
-        });
-    }
 
     highlightDuplicates();
 
