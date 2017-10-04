@@ -1,3 +1,4 @@
+
 var driverinfo_api = "https://ergast.com/api/f1/current/driverStandings.json";
 var raceinfo_api = "https://ergast.com/api/f1/current.json";
 var date = $.datepicker.formatDate("yy-mm-dd", new Date());
@@ -38,27 +39,52 @@ $.ajax({
     dataType: "json",
     cache: false,
     success: function(data) {
-        var race_date = data.MRData.RaceTable.Races[0].date;
 
         // Add RaceNames
-        var source_race_name = $("#race-name").html();
-        var race_info_template = Handlebars.compile(source_race_name);
-        var race_names = data.MRData.RaceTable.Races;
-        var race = race_info_template({'race_names': race_names });
-        //if(race_date > date) {
-            $('#upcoming-races').append(race);
-        //}
+            var race_date = data.MRData.RaceTable.Races[0].date;
+            var source_race_name = $("#race-name").html();
+            var race_info_template = Handlebars.compile(source_race_name);
+            var race_names = data.MRData.RaceTable.Races;
+            var race = race_info_template({'race_names': race_names });
+                $('#upcoming-races').append(race);
     }
-<<<<<<< HEAD
+});
+
+
+
+$(document).ajaxComplete(function () {
+
+    function highlightDuplicates() {
+        //console.log("dasdsa");
+
+
+        // loop over all input fields in table
+        $('.input-box').find('input').each(function() {
+
+            if ($('.input-box').find('input[value="' + $(this).val() + '"]').length() > 1) {
+                // highlight this
+
+                $(this).addClass('duplicate');
+                console.log("haha");
+            } else {
+                // otherwise remove
+                $(this).removeClass('duplicate');
+            }
+        });
+    }
+
+    highlightDuplicates();
+
+    $('.input-box').find('input').bind('input',function() {
+        $(this).attr('value',this.value)
+    });
+
+    // bind test on any change event
+    $('.input-box').find('input').on('input',highlightDuplicates);
+
 });
 
 
 
 
 
-
-
-
-=======
-});
->>>>>>> origin/master

@@ -83,14 +83,14 @@
   <script id="race-name" type="text/x-handlebars-template">
     {{#each race_names}}
       <tr class="input-box">
-        <td> {{ raceName }} </td>
+        <td> {{ raceName }} <p> {{ date }} </p>         </td>
       </tr>
     {{/each}}
   </script>
 
   <script id="input-pos" type="text/x-handlebars-template">
     {{#each driver_codes}}
-    <td> <input type="number" name="quantity" min="1" max="20" />             </td>
+    <td> <input type="number" class="xyz" name="quantity" min="1" max="20" />     </td>
     {{/each}}
   </script>
 
@@ -101,8 +101,8 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js'></script>
-
-    <script  src="js/index.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js'></script>
+  <script  src="js/index.js"></script>
 
 </body>
 </html>
