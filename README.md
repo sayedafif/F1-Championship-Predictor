@@ -36,3 +36,10 @@ Points are provided according to F1 Rules -
 |10              |1      |
 
 An Extra Point is awarded for Fastest Lap if the driver finishes in the Top 10.
+
+
+# API Used
+
+https://ergast.com/mrd/
+
+Feel free to go through the API properly. It contains almost all details on the results and race schedules of the F1 race calendar.
