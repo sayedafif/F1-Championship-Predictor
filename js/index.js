@@ -38,15 +38,24 @@ $.ajax({
     url: raceinfo_api,
     dataType: "json",
     cache: false,
-    success: function(data) {
-
+    success: function (data) {
         // Add RaceNames
-            var race_date = data.MRData.RaceTable.Races[0].date;
-            var source_race_name = $("#race-name").html();
-            var race_info_template = Handlebars.compile(source_race_name);
-            var race_names = data.MRData.RaceTable.Races;
-            var race = race_info_template({'race_names': race_names });
-                $('#upcoming-races').append(race);
+        var race_date = data.MRData.RaceTable.Races[0].date;
+        var source_race_name = $("#race-name").html();
+        var race_info_template = Handlebars.compile(source_race_name);
+        var race_names = data.MRData.RaceTable.Races;
+
+        var upcomingRaces = race_names.filter(function (race) {
+            return Date.parse(race.date) >= new Date();
+        }).sort(function (race1, race2) {
+            return race1.date >= race2.date;
+        });
+
+        var race = race_info_template({
+            'race_names': upcomingRaces
+        });
+
+        $('#upcoming-races').append(race);
     }
 });
 
