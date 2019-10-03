@@ -20,6 +20,8 @@ In the Predicting the Winner Table, we will provide the position of any driver i
 ## Points according to Position
 
 Points are provided according to F1 Rules -
+
+
 |Position        |Points |
 |----------------|-------|
 |1               |25     |
