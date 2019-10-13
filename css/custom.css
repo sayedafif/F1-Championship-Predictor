@@ -1,0 +1,135 @@
+body {
+  background-color: #20273a;
+  color: #a3a4bc;
+  font-family: 'Roboto', sans-serif;
+}
+
+.grid-header {
+  color: #234a6a;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #313c4e;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  padding-left: 50px;
+}
+
+.grid:hover {
+  background-color: #3b485e;
+}
+
+.grid:nth-child(2n) {
+  background-color: #2d3447;
+}
+
+.grid:nth-child(2n):hover {
+  background-color: #3a425a;
+}
+
+.grid > div:first-child {
+  color: #ff7488;
+  border-right: 1px solid #20273a;
+}
+
+.grid > div {
+  padding: 8px;
+}
+
+.grid-header {
+  display: none;
+  font-weight: bold;
+  color: #95a5a6;
+}
+
+.f1-driver {
+  grid-column: span 2;
+}
+
+.f1-const {
+  grid-column: span 2;
+}
+
+.f1-points {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.f1-wins {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.f1-points, 
+.f1-wins {
+  position: relative;
+}
+
+.f1-points::before, 
+.f1-wins::before {
+  position: absolute;
+  color: #7f8c8d;
+  font-size: 8px;
+  top: 0px;
+}
+
+.f1-points::before {
+  content: "Points";
+}
+
+.f1-wins::before {
+  content: "Wins";
+}
+
+@media (max-width: 768px) {
+
+  .f1-driver {
+    font-size: 30px;
+    padding: 0px;
+  }
+  .grid {
+    margin-bottom: 20px;
+  }
+
+  .grid > div:first-child {
+    position: absolute;
+    background-color: #ff7488;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    left: -8px;
+    top: -8px;
+  }
+}
+
+@media (min-width: 768px) {
+  .grid > div {
+    border-bottom: 1px solid #20273a;
+  }
+
+  .grid {
+    padding: 0;
+    grid-template-columns: 50px repeat(2, 1fr) 70px 60px;
+  }
+
+  .grid-header {
+    display: grid;
+  }
+
+  .f1-points, .f1-wins, .f1-driver, .f1-const {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .f1-points::before, .f1-wins::before {
+    display: none;
+  }
+}
