@@ -1,122 +1,116 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>F1 Championship Predictor</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <!-- <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'> -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-  </head>
 
-  <body>
-    <div class="container-fluid">
-      <h3 class="text-center display-4 my-5 font-weight-bold ">
-        Current Standings
-      </h3>
+<head>
+  <meta charset="UTF-8" />
+  <title>F1 Championship Predictor</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
 
-      <!-- START OF CURRENT STANDINGS TABLE-->
+<body>
+  <div class="container-fluid">
+    <h3 class="text-center display-4 my-5 font-weight-bold ">
+      Current Standings
+    </h3>
 
-      <div
-        class="table-responsive table-standings rounded border border-dark shadow-lg"
-      >
-        <table
-          class="table table-bordered  table-hover table-striped"
-          id="current-standings"
-        >
-          <thead class="thead-dark">
-            <tr>
-              <th>Position</th>
-              <th>Driver</th>
-              <th>Constructor</th>
-              <th>Points</th>
-              <th>Wins</th>
-            </tr>
-          </thead>
-          <tbody id="current-standings-data" class="labels"></tbody>
-          <tfoot>
-            <tr class="bg-light text-dark">
-              <td colspan="5" class="text-center">
-                Data retrieved from
-                <a href="https://ergast.com/mrd/" target="_blank"
-                  >Ergast Developer API </a
-                >.
-              </td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-      <!--end of current standing-->
+    <!-- START OF CURRENT STANDINGS TABLE-->
 
-      <!-- Start of Predictor -->
-
-      <h3 class="text-center display-4 my-5 font-weight-bold">
-        Try Predicting the winner
-      </h3>
-
-      <div class="table-responsive rounded border border-dark shadow-lg mb-5">
-        <table class="table table-bordered table-hover" id="predictor-table">
-          <thead class="thead-dark">
-            <tr id="predictor-heading">
-              <th>Race Grand Prix</th>
-            </tr>
-          </thead>
-
-          <tbody id="upcoming-races"></tbody>
-          <tfoot>
-            <tr class="bg-light text-dark">
-              <td colspan="30" class="text-center">
-                Data retrieved from
-                <a href="http://ergast.com/mrd/" target="_blank"
-                  >Ergast Developer API</a
-                >.
-              </td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
+    <div class="table-responsive table-standings rounded border border-dark shadow-lg">
+      <table class="table table-bordered  table-hover table-striped" id="current-standings">
+        <thead class="thead-dark">
+          <tr>
+            <th>Position</th>
+            <th>Driver</th>
+            <th>Constructor</th>
+            <th>Points</th>
+            <th>Wins</th>
+          </tr>
+        </thead>
+        <tbody id="current-standings-data" class="labels"></tbody>
+        <tfoot>
+          <tr class="bg-light text-dark">
+            <td colspan="5" class="text-center">
+              Data retrieved from
+              <a href="https://ergast.com/mrd/" target="_blank">Ergast Developer API </a>.
+            </td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
-    <!-- End of Predictor -->
+    <!--end of current standing-->
 
-    <script id="current-standing-row" type="text/x-handlebars-template">
-      {{#each driver_standings}}
-        <tr>
-          <td>{{position}}</td>
-          <td>{{ Driver.givenName }} {{ Driver.familyName }}</td>
-          <td> {{ Constructors.0.name }}</td>
-          <td>{{ points }}</td>
-          <td>{{ wins }}</td>
-        </tr>
-      {{/each}}
-    </script>
+    <!-- Start of Predictor -->
 
-    <script id="driver-name-heading" type="text/x-handlebars-template">
-      {{#each driver_codes}}
-        <th> {{ Driver.code }} </th>
-      {{/each}}
-    </script>
+    <h3 class="text-center display-4 my-5 font-weight-bold">
+      Try Predicting the winner
+    </h3>
 
-    <script id="race-name" type="text/x-handlebars-template">
-      {{#each race_names}}
-        <tr class="input-box">
-          <td> {{ raceName }} <p> {{ date }} </p>         </td>
-        </tr>
-      {{/each}}
-    </script>
+    <div class="table-responsive rounded border border-dark shadow-lg mb-5">
+      <table class="table table-bordered table-hover" id="predictor-table">
+        <thead class="thead-dark">
+          <tr id="predictor-heading">
+            <th>Race Grand Prix</th>
+          </tr>
+        </thead>
 
-    <script id="input-pos" type="text/x-handlebars-template">
-      {{#each driver_codes}}
-      <td> <input type="number" class="input" name="quantity" min="1" max="20" />     </td>
-      {{/each}}
-    </script>
+        <tbody id="upcoming-races"></tbody>
+        <tfoot>
+          <tr class="bg-light text-dark">
+            <td colspan="30" class="text-center">
+              Data retrieved from
+              <a href="http://ergast.com/mrd/" target="_blank">Ergast Developer API</a>.
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  <!-- End of Predictor -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
-    <script src="js/index.js"></script>
-  </body>
+  <script id="current-standing-row" type="text/x-handlebars-template">
+    {{#each driver_standings}}
+      <tr>
+        <td>{{position}}</td>
+        <td>{{ Driver.givenName }} {{ Driver.familyName }}</td>
+        <td> {{ Constructors.0.name }}</td>
+        <td>{{ points }}</td>
+        <td>{{ wins }}</td>
+      </tr>
+    {{/each}}
+  </script>
+
+  <script id="driver-name-heading" type="text/x-handlebars-template">
+    {{#each driver_codes}}
+      <th> {{ Driver.code }} </th>
+    {{/each}}
+  </script>
+
+  <script id="race-name" type="text/x-handlebars-template">
+    {{#each race_names}}
+      <tr class="input-box">
+        <td> 
+          {{ raceName }} <p> {{ date }} </p>
+        </td>
+      </tr>
+    {{/each}}
+  </script>
+
+  <script id="input-pos" type="text/x-handlebars-template">
+    {{#each driver_codes}}
+      <td> 
+        <input type="number" class="input" name="quantity" min="1" max="20" />
+      </td>
+    {{/each}}
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+  <script src="js/index.js"></script>
+</body>
+
 </html>
