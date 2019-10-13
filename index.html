@@ -4,21 +4,33 @@
 <head>
   <meta charset="UTF-8" />
   <title>F1 Championship Predictor</title>
-  <link rel="stylesheet" href="css/style.css" />
   <!-- <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'> -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/custom.css" />
 </head>
 
 <body>
-  <div class="container-fluid">
-    <h3 class="text-center display-4 my-5 font-weight-bold ">
+  <div class="container-fluid p-5">
+    <h2 class="h3 font-weight-bold ">
       Current Standings
-    </h3>
+    </h2>
 
     <!-- START OF CURRENT STANDINGS TABLE-->
 
+    <div class="grid grid-header">
+      <div>Pos</div>
+      <div class="f1-driver">Driver</div>
+      <div class="f1-const">Constructor</div>
+      <div class="f1-points">Points</div>
+      <div class="f1-wins">Wins</div>
+    </div>
+
+    <div id="current-standings-data"></div>
+<!-- 
     <div class="table-responsive table-standings rounded border border-dark shadow-lg">
-      <table class="table table-bordered  table-hover table-striped" id="current-standings">
+      <table class="table table-bordered table-hover table-striped" id="current-standings">
         <thead class="thead-dark">
           <tr>
             <th>Position</th>
@@ -38,7 +50,7 @@
           </tr>
         </tfoot>
       </table>
-    </div>
+    </div> -->
     <!--end of current standing-->
 
     <!-- Start of Predictor -->
@@ -67,17 +79,18 @@
       </table>
     </div>
   </div>
+  
   <!-- End of Predictor -->
 
   <script id="current-standing-row" type="text/x-handlebars-template">
     {{#each driver_standings}}
-      <tr>
-        <td>{{position}}</td>
-        <td>{{ Driver.givenName }} {{ Driver.familyName }}</td>
-        <td> {{ Constructors.0.name }}</td>
-        <td>{{ points }}</td>
-        <td>{{ wins }}</td>
-      </tr>
+      <div class="grid">
+        <div>{{position}}</div>
+        <div class="f1-driver">{{ Driver.givenName }} {{ Driver.familyName }}</div>
+        <div class="f1-const"> {{ Constructors.0.name }}</div>
+        <div class="f1-points">{{ points }}</div>
+        <div class="f1-wins">{{ wins }}</div>
+      </div>
     {{/each}}
   </script>
 
@@ -99,9 +112,9 @@
 
   <script id="input-pos" type="text/x-handlebars-template">
     {{#each driver_codes}}
-      <td> 
-        <input type="number" class="input" name="quantity" min="1" max="20" />
-      </td>
+    <td>
+      <input type="number" class="input" name="quantity" min="1" max="20" />
+    </td>
     {{/each}}
   </script>
 
